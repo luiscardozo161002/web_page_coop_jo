@@ -12,51 +12,72 @@ import {
 import { Menu } from "lucide-react"
 
 export default function Header() {
+  const navLinks = [
+    { name: "Inicio", path: "/" },
+    { name: "Acerca de", path: "/acerca" },
+    { name: "Misión y Visión", path: "/mision-y-vision" },
+    { name: "Servicios", path: "/servicios" },
+    { name: "Filiales", path: "/filiales" },
+    { name: "Valores", path: "/valores" },
+    { name: "Ubicación", path: "/ubicacion" },
+    { name: "Contacto", path: "/contacto" },
+  ];
+
   return (
-    <header className="sticky top-0 z-20 backdrop-blur md:bg-gradient-to-b md:backdrop-blur border-b border-zinc-900/10 dark:border-zinc-700 md:px-40">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+    <header className="sticky top-0 z-50 glass">
+      <div className="mx-auto flex  items-center justify-between px-4 py-4">
         <Link
           to="/"
-          className="text-2xl font-semibold tracking-wide flex items-center gap-3 text-gray-900 dark:text-zinc-300"
+          className="flex items-center gap-3 transition-transform hover:scale-105"
         >
           <img
             src="https://i.ibb.co/S7Zw0Ld9/Logo-Coop-Juarez-SCL.png"
             alt="Logo de Cooperativa Juárez SCL"
-            className="w-11 sm:w-16 rounded-full border p-[0.5] bg-white object-cover"
+            className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-primary bg-white object-cover shadow-sm"
           />
-          <span className="hidden sm:block">Cooperativa Juárez SCL</span>
+          <div className="flex flex-col">
+            <span className="hidden xl:block text-xl font-bold tracking-tight text-foreground">
+              Cooperativa Juárez SCL
+            </span>
+            <span className="hidden xl:block text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
+              Excelencia en Servicios
+            </span>
+          </div>
         </Link>
+        {/* Desktop Nav */}
+        <nav className="hidden xl:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors relative group"
+            >
+              {link.name}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+            </Link>
+          ))}
+        </nav>
 
-        {/* Nav */}
-        <div className="flex items-center gap-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Abrir menú</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
-                <Link to="/">Inicio</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/acerca">Acerca de</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/mision-y-vision">Misión y Visión</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/politicas-de-calidad">Políticas de Calidad</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/ubicacion">Ubicación</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/valores">Valores</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+        {/* Actions */}
+        <div className="flex items-center gap-3">
+          <div className="xl:hidden">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="hover:bg-primary/10">
+                  <Menu className="h-6 w-6 text-foreground" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56 glass">
+                {navLinks.map((link) => (
+                  <DropdownMenuItem key={link.path} asChild>
+                    <Link to={link.path} className="w-full cursor-pointer py-2">
+                      {link.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
           <ModeToggle />
         </div>
       </div>
