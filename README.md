@@ -1,6 +1,6 @@
 # Sociedad Cooperativa de Producción de Servicios Juárez S.C.L.
 
-![Cooperativa Juárez Logo](https://i.ibb.co/RpVP4PP8/Logo-Coop-Juarez-SCL.png)
+![Cooperativa Juárez Logo](https://i.ibb.co/hxXMC1pQ/JUAREZ-SIN-FONDO.png)
 
 ## 🏢 Sobre Nosotros
 Fundada en **1962** por un grupo visionario de 97 trabajadores, la **Sociedad Cooperativa de Producción de Servicios Juárez S.C.L.** es un referente nacional en el autotransporte de materiales de construcción, barrenación y explotación minera. 
